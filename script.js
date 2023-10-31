@@ -12,6 +12,9 @@ clear.addEventListener("click", function () {
   operator.innerText = "";
   inputedValues.innerText = "";
   currentValues.innerText = "";
+  firstNumber = "";
+  secondNumber = "";
+  result = "";
 });
 
 del.addEventListener("click", function () {
@@ -26,7 +29,9 @@ decimal.addEventListener("click", function () {
 
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener("click", function () {
-    currentValues.innerText += this.innerText;
+    if (currentValues.innerText.length < 13) {
+      currentValues.innerText += this.innerText;
+    }
   });
 }
 
@@ -50,10 +55,13 @@ for (let i = 0; i < operators.length; i++) {
 }
 
 equal.addEventListener("click", function () {
-  operate();
-  inputedValues.innerText = "";
-  operator.innerText = "";
-  currentValues.innerText = result;
+  if (currentValues.innerText) {
+    operate();
+    inputedValues.innerText = "";
+    operator.innerText = "";
+    result = Math.round(result * 100) / 100;
+    currentValues.innerText = result;
+  }
 });
 
 function operate() {
@@ -77,17 +85,12 @@ function operate() {
   }
 }
 
-// document.addEventListener(
-//   "keydown",
-//   (event) => {
-//     var name = event.key;
-//     var code = event.code;
-//     // Alert the key name and key code on keydown
-//     console.log(`Key pressed ${name} \r\n Key code value: ${code}`);
-//   },
-//   false
-// );
+document.addEventListener("keydown", function (event) {
+  const key = event.key;
 
-// document.addEventListener("keydown", (e) => {
-//   const key = e.key;
-// });
+  const button = document.querySelector(`button[data-key="${key}"]`);
+
+  if (button) {
+    button.click();
+  }
+});

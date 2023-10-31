@@ -29,6 +29,7 @@ body {
   margin-top: 10px;
   margin-bottom: 5px;
   text-align: right;
+  border-radius: 5px;
 }
 
 #screenInputedValue {
@@ -42,6 +43,9 @@ body {
   width: 170px;
   font-size: 1.2rem;
   height: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 #operator {
@@ -51,6 +55,9 @@ body {
 }
 #currentValue {
   font-size: 1.6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .buttons {
@@ -70,4 +77,8 @@ body {
 
 .big-btn {
   width: 100px;
+}
+
+.misc {
+  background-color: #ffc436;
 }
